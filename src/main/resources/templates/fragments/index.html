@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{ fragments/navbar :: head}"></div>
+    <title>Best of the Year</title>
+</head>
+
+<body>
+    <header>
+        <nav th:replace="~{ fragments/navbar :: navbar('Home')}"></nav>
+    </header>
+
+        <main>
+            <h1 th:text="| Best of the Year by ${author} |"></h1>
+            <div>
+                <img th:src="@{/img/moviefoto.jpeg}">
+            </div>
+            <div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, harum debitis? Quod nostrum corrupti porro accusantium facilis adipisci sequi consequatur, magnam mollitia, blanditiis aperiam officia odit ipsum repellat alias quidem?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, eveniet, quas consequuntur exercitationem sint animi sequi deserunt error, nulla sunt cumque ex velit necessitatibus ea aliquid eligendi numquam illum voluptates.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae sit necessitatibus error. Quisquam quo velit magnam itaque totam quod, consequuntur consequatur! Cumque quidem eaque, soluta ea error officiis. Repudiandae, eius.</p>
+            </div>
+
+        </main>
+
+
+
+        <div th:replace="~{ fragments/fragments :: scrips}"></div>
+
+</body>
+</html>

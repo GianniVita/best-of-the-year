@@ -30,8 +30,22 @@ public class IndexController {
         names = names.substring(0, names.length() - 2);
 
         model.addAttribute("title", "Movies");
-        model.addAttribute("names", names)
+        model.addAttribute("names", names);
+
+        return "listAsString";
     }
 
+    @GetMapping("/string/songs")
+    public String songsAsString(Model model) {
+        String name = "";
+
+        for(Songs song : getBestSongs()){
+            names += song.getBestSongs() + ", ";
+        }
+    }
     
+    
+
+
+
 }
