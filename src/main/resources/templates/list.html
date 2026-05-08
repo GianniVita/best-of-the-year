@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmens:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <div th:replace="~{ fragments/fragments :: head}"></div>
@@ -15,10 +15,10 @@
                 <ul class="list-group" th:if="${list.size() > 0}">
                     <li class="list-group-item" th:each="item : ${list}">
                         <div class="ms-3 me-auto">
-                            <a th:if="${title = 'Movies'}" class="nav-link"
+                            <a th:if="${title == 'Movies'}" class="nav-link"
                                 th:href="@{/movies/{movieId}(movieId=${item.id})}" th:text="${item.title}"></a>
-                            <a th:if="${title = 'Songs'}" class="nav-Link"
-                                th:href="@{/songs/{songId} (songId=${item.id})}" th:text="${item.title}"></a>
+                            <a th:if="${title == 'Songs'}" class="nav-Link"
+                                th:href="@{/songs/{songId}(songId=${item.id})}" th:text="${item.title}"></a>
                         </div>
                     </li>
                 </ul>

@@ -1,22 +1,13 @@
 package org.lessons.bestoftheyear.java.best_of_the_year.model;
 
 public class Movie {
-
     private Integer id;
     private String title;
-
-    public Movie() {
-    }
-
-    public Movie(Integer id, String title) {
-        this.id = id;
-        this.title = title;
-    }
 
     public Integer getId() {
         return id;
     }
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
@@ -29,7 +20,7 @@ public class Movie {
         this.title = title;
     }
 
-    public void setData(Integer id, String title) {
+    public Movie(Integer id, String title) {
         this.id = id;
         this.title = title;
     }

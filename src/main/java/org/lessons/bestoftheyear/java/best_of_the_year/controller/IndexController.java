@@ -82,6 +82,7 @@ public class IndexController {
         for (Movie movie : getBestMovies()) {
             if (movie.getId().equals(movieId)) {
                 movieFound = movie;
+                break;
             }
         }
 
@@ -92,11 +93,23 @@ public class IndexController {
     }
     
 
+    @GetMapping("/songs/{id}")
+    public String songDetails(Model model, @PathVariable("id") Integer songId) {
+        Song songFound = null;
 
+        for (Song song : getBestSongs()) {
+            if (song.getId().equals(songId)) {
+                songFound = song;
+                break;
+            }
+        }
 
+        model.addAttribute("id", songId);
+        model.addAttribute("item", songFound);
 
+        return "details";
+    }
 
-    
 
 
     
