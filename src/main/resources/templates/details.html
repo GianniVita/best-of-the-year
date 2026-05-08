@@ -2,7 +2,7 @@
     <html xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <div th:replace="~{ fragments/fragments : head}"></div>
+        <div th:replace="~{ fragments/fragments :: head}"></div>
         <title th:text="${title}"></title>
     </head>
 
@@ -21,7 +21,7 @@
                         metus, at gravida mi. Integer blandit elit at diam eleifend, in pharetra felis pharetra.In non
                         molestie massa. Donec velit massa, feugiat non ex eget, iaculis iaculis lectus. </p>
                 </div>
-                <div class="col-12" th:unles="${item != null}">
+                <div class="col-12" th:unless="${item != null}">
                     <h2 th:text="|No media found with id: ${id}|" class="alert alert-warning" />
                 </div>
             </section>
