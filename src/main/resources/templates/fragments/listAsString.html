@@ -2,14 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title th:text="${title}">List</title>
+    <title th:text=[[${title}]]></title>
 </head>
 
 <body>
     <main>
-        <h1 th:text="${title}">List</h1>
-        <p th:text="${names}">Items</p>
-        <p><a th:href="@{/}">Back to home</a></p>
+        <h1 th:text="${title}"/>
+        <p th:text="${names}"></p>
     </main>
 </body>
 

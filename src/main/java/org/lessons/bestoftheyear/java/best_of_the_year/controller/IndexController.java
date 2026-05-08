@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping("/")
@@ -17,47 +20,86 @@ public class IndexController {
     @GetMapping
     public String index(Model model) {
         model.addAttribute("author", "Richardson");
-        return "fragments/index";
+        return "index";
     }
 
     @GetMapping("/string/movies")
     public String moviesAsString(Model model) {
-        StringBuilder names = new StringBuilder();
+        String names = "";
 
         // I dati vengono presi dalla lista locale del controller
         for (Movie movie : getBestMovies()) {
-            names.append(movie.getTitle()).append(", ");
+            names += movie.getTitle() + ", ";
         }
 
-        if (names.length() >= 2) {
-            names.setLength(names.length() - 2);
-        }
-
+        names = names.substring(0, names.length() - 2);
+        
         model.addAttribute("title", "Movies");
-        model.addAttribute("names", names.toString());
+        model.addAttribute("names", names);
 
-        return "fragments/listAsString"; // Thymeleaf cerca il file in templates/fragments/listAsString.html
+        return "listAsString"; 
     }
+
 
     @GetMapping("/string/songs")
     public String songsAsString(Model model) {
 
-        StringBuilder names = new StringBuilder();
+        String names = "";
         // I dati vengono presi dalla lista locale del controller
         for (Song song : getBestSongs()) {
-            names.append(song.getTitle()).append(", ");
+            names += song.getTitle() + ", ";
         }
 
-        if (names.length() >= 2) {
-            names.setLength(names.length() - 2);
-        }
+        names = names.substring(0, names.length() - 2);
 
         model.addAttribute("title", "Songs");
-        model.addAttribute("names", names.toString());
+        model.addAttribute("names", names);
 
-        return "fragments/listAsString"; // Thymeleaf cerca il file in templates/fragments/listAsString.html
+        return "listAsString";
     }
 
+    @GetMapping("/movies")
+    public String movies(Model model) {
+        model.addAttribute("title", "Movies");
+        model.addAttribute("list", getBestMovies());
+        
+        return "list";
+    }
+    
+    @GetMapping("/songs")
+    public String songs(Model model) {
+        model.addAttribute("title", "Songs");
+        model.addAttribute("list", getBestSongs());
+
+        return "list";
+    }
+
+
+    @GetMapping("/movies/{id}")
+    public String movieDetails(Model model, @PathVariable("id") Integer movieId) {
+        Movie movieFound = null;
+
+        for (Movie movie : getBestMovies()) {
+            if (movie.getId().equals(movieId)) {
+                movieFound = movie;
+            }
+        }
+
+        model.addAttribute("id", movieId);
+        model.addAttribute("item", movieFound);
+        
+        return"details";
+    }
+    
+
+
+
+
+
+    
+
+
+    
     // Lista dei migliori film dell'anno
     private List<Movie> getBestMovies() {
         List<Movie> list = new ArrayList<>();

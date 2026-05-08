@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmens:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{ fragments/fragments :: head}"></div>
+    <title th:text="$(title}"></title>
+</head>
+
+<body>
+    I<div class="container">
+        <nav th:replace="~{ fragments/navbar :: navbar(${title})}"></nav>
+        <h1 class="text-center py-3">Best [[${title}]] of the year</h1>
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <ul class="list-group" th:if="${list.size() > 0}">
+                    <li class="list-group-item" th:each="item : ${list}">
+                        <div class="ms-3 me-auto">
+                            <a th:if="${title = 'Movies'}" class="nav-link"
+                                th:href="@{/movies/{movieId}(movieId=${item.id})}" th:text="${item.title}"></a>
+                            <a th:if="${title = 'Songs'}" class="nav-Link"
+                                th:href="@{/songs/{songId} (songId=${item.id})}" th:text="${item.title}"></a>
+                        </div>
+                    </li>
+                </ul>
+                <p th:unless="${list.size() > 0}">No elements in list</p>
+            </div>
+        </div>
+    </div>
+        <div th:replace="~{ fragments/fragments :: scripts}"></div>
+        
+    </body>
+</html>
