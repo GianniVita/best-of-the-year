@@ -2,30 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <div th:replace="~{ fragments/fragments :: head}"></div>
     <title>Best of the Year</title>
 </head>
 
 <body>
     <header>
-        <!-- navbar da aggiungere quando esisterà fragments/navbar.html -->
-         
+        <nav th:replace="~{ fragments/navbar :: navbar('Home')}"></nav>
     </header>
 
-    <main>
-        <h1 th:text="| Best of the Year by ${author} |"></h1>
-        <div>
-            <img th:src="@{/img/moviefoto.jpeg}">
+    <main class="container py-4">
+        <h1 class="text-center mb-4" th:text="| Best of the Year by ${author} |"></h1>
+        <div class="text-center mb-4">
+            <img class="img-fluid rounded" th:src="@{/img/moviefoto.jpeg}">
         </div>
-        <div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, harum debitis? Quod nostrum corrupti porro
-                accusantium facilis adipisci sequi consequatur, magnam mollitia, blanditiis aperiam officia odit ipsum
-                repellat alias quidem?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, eveniet, quas consequuntur
-                exercitationem sint animi sequi deserunt error, nulla sunt cumque ex velit necessitatibus ea aliquid
-                eligendi numquam illum voluptates.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae sit necessitatibus error. Quisquam quo
-                velit magnam itaque totam quod, consequuntur consequatur! Cumque quidem eaque, soluta ea error officiis.
-                Repudiandae, eius.</p>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, harum debitis? Quod nostrum corrupti
+                    porro
+                    accusantium facilis adipisci sequi consequatur, magnam mollitia, blanditiis aperiam officia odit
+                    ipsum
+                    repellat alias quidem?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, eveniet, quas consequuntur
+                    exercitationem sint animi sequi deserunt error, nulla sunt cumque ex velit necessitatibus ea aliquid
+                    eligendi numquam illum voluptates.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae sit necessitatibus error. Quisquam quo
+                    velit magnam itaque totam quod, consequuntur consequatur! Cumque quidem eaque, soluta ea error
+                    officiis.
+                    Repudiandae, eius.</p>
+            </div>
         </div>
 
     </main>
@@ -33,9 +38,7 @@
 
 
     <!-- scripts da aggiungere quando esisterà fragments/fragments.html -->
-    <div th:fragment="scripts">
-        <script th:src="@{/webjars/bootstrap/5.3.7/js/bootstrap.bundle.min.js}"></script>
-    </div>
+    <div th:replace="~{ fragments/fragments :: scripts}"></div>
 </body>
 
 </html>

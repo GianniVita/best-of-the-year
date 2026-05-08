@@ -4,7 +4,7 @@
 <body>
     <!-- navbar fragment -->
     <nav th:fragment="navbar(current)" class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
+        <div class="container">
             <a class="navbar-brand" th:href="@{/}">Best of the year</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
                 aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,7 +16,7 @@
                         <a class="nav-link" th:href="@{/movies}"
                             th:classAppend="${current == 'Movies'} ? active : not-active">Movies</a>
                     </li>
-                    <li class="nav item">
+                    <li class="nav-item">
                         <a class="nav-link" th:href="@{/songs}"
                             th:classAppend="${current == 'Songs'} ? active : not-active">Songs</a>
                     </li>
@@ -24,7 +24,7 @@
             </div>
         </div>
     </nav>
-    
+
 </body>
 
 </html>
